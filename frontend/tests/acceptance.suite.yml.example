@@ -1,5 +1,4 @@
-suite_namespace: frontend\tests\acceptance
-actor: AcceptanceTester
+class_name: AcceptanceTester
 modules:
     enabled:
         - WebDriver:

@@ -1,5 +1,4 @@
-suite_namespace: frontend\tests\unit
-actor: UnitTester
+class_name: UnitTester
 modules:
     enabled:
         - Yii2:
