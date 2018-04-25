@@ -6,6 +6,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use kartik\date\DatePicker;
 
 $this->title = 'Signup';
 $this->params['breadcrumbs'][] = $this->title;
@@ -24,6 +25,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'email') ?>
 
                 <?= $form->field($model, 'password')->passwordInput() ?>
+
+                <?= $form->field($model, 'date')->widget(DatePicker::class)?>
+
+                <?= $form->field($model, 'phone')->widget(\yii\widgets\MaskedInput::className(), [
+                    'mask' => '+7 (999) 999 99 99' ]) ?>
+                <?= $form->field($model, 'children')->checkbox() ?>
+
+                <?= $form->field($model, 'family')->checkbox() ?>
 
                 <div class="form-group">
                     <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
