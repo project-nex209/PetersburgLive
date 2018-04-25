@@ -26,10 +26,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'password')->passwordInput() ?>
 
-                <?= $form->field($model, 'date')->widget(DatePicker::class)?>
+                <?= $form->field($model, 'date')->widget(DatePicker::className(), [
+                  'pluginOptions' => [
+                    'forceParse' => 'false',
+                    'format' => 'yyyy-mm-dd',
+                    ]
+                  ])?>
 
                 <?= $form->field($model, 'phone')->widget(\yii\widgets\MaskedInput::className(), [
-                    'mask' => '+7 (999) 999 99 99' ]) ?>
+                    'mask' => '+7 (999) 999-99-99' , 'type' => 'integer'])->textInput(); ?>
                 <?= $form->field($model, 'children')->checkbox() ?>
 
                 <?= $form->field($model, 'family')->checkbox() ?>
