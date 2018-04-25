@@ -24,7 +24,7 @@ class m130524_201442_init extends Migration
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
             'date' => $this->date("Y-m-d"),
-            'phone' => $this->integer(),
+            'phone' => $this->text(),
             'family' => $this->integer()->defaultValue(Null),
             'children' => $this->integer()->defaultValue(Null),
         ], $tableOptions);
