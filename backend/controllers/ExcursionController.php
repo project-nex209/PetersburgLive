@@ -1,7 +1,6 @@
 <?php
 
 namespace backend\controllers;
-namespace app\controllers;
 
 use Yii;
 use common\models\Excursion;
