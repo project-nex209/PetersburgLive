@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use common\models\Excursion;
 /* @var $this yii\web\View */
 /* @var $model common\models\Token */
 /* @var $form yii\widgets\ActiveForm */
@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id_user')->textInput() ?>
 
-    <?= $form->field($model, 'excursion')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'excursion')->dropDownList(ArrayHelper::map(Excursion::find()->all(), 'id', 'excursion')) ?>
 
     <?= $form->field($model, 'date')->textInput() ?>
 
