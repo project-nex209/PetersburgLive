@@ -6,15 +6,15 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tokens';
+$this->title = 'Excursions';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="token-index">
+<div class="excursion-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Token', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Excursion', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -23,12 +23,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'id_user',
             'excursion',
-            'date',
-            'countMan',
-            //'countChildren',
-            //'price',
+            'position',
+            'priceMan',
+            'priceChildren',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

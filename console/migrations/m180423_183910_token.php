@@ -18,7 +18,7 @@ class m180423_183910_token extends Migration
                   'excursion' => $this->string(),
                   'date' => $this->date("Y-m-d H:i:s"),
                   'countMan' => $this->integer(),
-                  'children' => $this->integer()->defaultValue(0),
+                  'countChildren' => $this->integer(),
                   'price'=>$this->integer(),
               ]);
 

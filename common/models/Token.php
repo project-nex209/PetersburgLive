@@ -12,7 +12,7 @@ use Yii;
  * @property string $excursion
  * @property string $date
  * @property int $countMan
- * @property int $children
+ * @property int $countChildren
  * @property int $price
  *
  * @property Excursion $excursion0
@@ -34,7 +34,8 @@ class Token extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_user', 'countMan', 'children', 'price'], 'integer'],
+            [['id_user', 'countMan', 'countChildren', 'price'], 'integer'],
+            [['id_user'], 'default', 'value' => Yii::$app->user->identity->id],
             [['date'], 'safe'],
             [['excursion'], 'string', 'max' => 255],
             [['excursion'], 'exist', 'skipOnError' => true, 'targetClass' => Excursion::className(), 'targetAttribute' => ['excursion' => 'excursion']],
@@ -53,7 +54,7 @@ class Token extends \yii\db\ActiveRecord
             'excursion' => 'Excursion',
             'date' => 'Date',
             'countMan' => 'Count Man',
-            'children' => 'Children',
+            'countChildren' => 'Count Children',
             'price' => 'Price',
         ];
     }

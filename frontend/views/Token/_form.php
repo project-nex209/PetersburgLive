@@ -20,7 +20,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'countMan')->textInput() ?>
 
-    <?= $form->field($model, 'children')->textInput() ?>
+    <?= $form->field($model, 'countChildren')->textInput() ?>
 
     <?= $form->field($model, 'price')->textInput() ?>
 

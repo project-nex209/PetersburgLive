@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'excursion',
             'date',
             'countMan',
-            //'children',
+            //'countChildren',
             //'price',
 
             ['class' => 'yii\grid\ActionColumn'],

@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Token */
+/* @var $model common\models\Excursion */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Tokens', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Excursions', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="token-view">
+<div class="excursion-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,12 +29,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'id_user',
             'excursion',
-            'date',
-            'countMan',
-            'countChildren',
-            'price',
+            'position',
+            'priceMan',
+            'priceChildren',
         ],
     ]) ?>
 

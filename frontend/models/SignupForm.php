@@ -14,8 +14,6 @@ class SignupForm extends Model
     public $password;
     public $date;
     public $phone;
-    public $children;
-    public $family;
 
 
     /**
@@ -41,10 +39,6 @@ class SignupForm extends Model
             ['date', 'required'],
 
             ['phone', 'required'],
-
-            ['children', 'safe'],
-
-            ['family', 'safe'],
     ];
   }
 
@@ -64,8 +58,6 @@ class SignupForm extends Model
         $user->email = $this->email;
         $user->date = $this->date;
         $user->phone = $this->phone;
-        $user->children = $this->children;
-        $user->family = $this->family;
         $user->setPassword($this->password);
         $user->generateAuthKey();
 
