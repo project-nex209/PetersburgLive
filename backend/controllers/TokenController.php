@@ -3,11 +3,13 @@
 namespace backend\controllers;
 
 use Yii;
+use common\models\User;
 use common\models\Token;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * TokenController implements the CRUD actions for Token model.
@@ -26,6 +28,19 @@ class TokenController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                      'actions' => ['index', 'view', 'update', 'create', 'delete'],
+                      'allow' => true,
+                      'roles' => ['@'],
+                      'matchCallback' => function ($rule, $action) {
+                     return User::isUserAdmin(Yii::$app->user->identity->username);
+                 }
+                    ]
+                ],
+              ]
         ];
     }
 

@@ -2,6 +2,7 @@
 namespace backend\controllers;
 
 use Yii;
+use common\models\User;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -30,6 +31,14 @@ class SiteController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                     ],
+                    [
+                      'actions' => ['index'],
+                      'allow' => true,
+                      'roles' => ['@'],
+                      'matchCallback' => function ($rule, $action) {
+                     return User::isUserAdmin(Yii::$app->user->identity->username);
+                 }
+                    ]
                 ],
             ],
             'verbs' => [
@@ -75,7 +84,7 @@ class SiteController extends Controller
         }
 
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+        if ($model->load(Yii::$app->request->post()) && $model->loginAdmin()) {
             return $this->goBack();
         } else {
             return $this->render('login', [

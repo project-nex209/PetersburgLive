@@ -4,10 +4,12 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\Excursion;
+use common\models\User;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * ExcursionController implements the CRUD actions for Excursion model.
@@ -26,6 +28,19 @@ class ExcursionController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                      'actions' => ['index', 'view', 'update', 'create', 'delete'],
+                      'allow' => true,
+                      'roles' => ['@'],
+                      'matchCallback' => function ($rule, $action) {
+                     return User::isUserAdmin(Yii::$app->user->identity->username);
+                 }
+                    ]
+                ],
+              ]
         ];
     }
 
