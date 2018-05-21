@@ -15,7 +15,7 @@ class m180423_183910_token extends Migration
       $this->createTable('token', [
                   'id' => $this->primaryKey(),
                   'id_user' => $this->integer(),
-                  'excursion' => $this->string(),
+                  'id_excursion' => $this->integer(),
                   'date' => $this->date("Y-m-d H:i:s"),
                   'countMan' => $this->integer(),
                   'countChildren' => $this->integer(),
@@ -41,15 +41,15 @@ class m180423_183910_token extends Migration
               $this->createIndex(
                   'idx-token-excursion',
                   'token',
-                  'excursion'
+                  'id_excursion'
               );
 
               $this->addForeignKey(
-                  'fk-token-excursion',
+                  'fk-token-id_excursion',
                   'token',
+                  'id_excursion',
                   'excursion',
-                  'excursion',
-                  'excursion',
+                  'id',
                   'CASCADE'
               );
     }
@@ -70,12 +70,12 @@ class m180423_183910_token extends Migration
       );
 
       $this->dropForeignKey(
-          'fk-token-excursion',
+          'fk-token-id_excursion',
           'token'
       );
 
       $this->dropIndex(
-          'idx-token-excursion',
+          'idx-token-id_excursion',
           'token'
       );
 

@@ -9,13 +9,13 @@ use Yii;
  *
  * @property int $id
  * @property int $id_user
- * @property string $excursion
+ * @property int $id_excursion
  * @property string $date
  * @property int $countMan
  * @property int $countChildren
  * @property int $price
  *
- * @property Excursion $excursion0
+ * @property Excursion $excursion
  * @property User $user
  */
 class Token extends \yii\db\ActiveRecord
@@ -34,11 +34,9 @@ class Token extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_user', 'countMan', 'countChildren', 'price'], 'integer'],
-            [['id_user'], 'default', 'value' => Yii::$app->user->identity->id],
+            [['id_user', 'id_excursion', 'countMan', 'countChildren', 'price'], 'integer'],
             [['date'], 'safe'],
-            [['excursion'], 'string', 'max' => 255],
-            [['excursion'], 'exist', 'skipOnError' => true, 'targetClass' => Excursion::className(), 'targetAttribute' => ['excursion' => 'excursion']],
+            [['id_excursion'], 'exist', 'skipOnError' => true, 'targetClass' => Excursion::className(), 'targetAttribute' => ['id_excursion' => 'id']],
             [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id_user' => 'id']],
         ];
     }
@@ -51,7 +49,7 @@ class Token extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'id_user' => 'Id User',
-            'excursion' => 'Excursion',
+            'id_excursion' => 'Id Excursion',
             'date' => 'Date',
             'countMan' => 'Count Man',
             'countChildren' => 'Count Children',
@@ -62,9 +60,9 @@ class Token extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getExcursion0()
+    public function getExcursion()
     {
-        return $this->hasOne(Excursion::className(), ['excursion' => 'excursion']);
+        return $this->hasOne(Excursion::className(), ['id' => 'id_excursion']);
     }
 
     /**

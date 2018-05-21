@@ -55,6 +55,6 @@ class Excursion extends \yii\db\ActiveRecord
      */
     public function getTokens()
     {
-        return $this->hasMany(Token::className(), ['excursion' => 'excursion']);
+        return $this->hasMany(Token::className(), ['id_excursion' => 'id']);
     }
 }

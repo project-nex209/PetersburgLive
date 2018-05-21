@@ -69,6 +69,7 @@ class ExcursionController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
+        
 
         return $this->render('create', [
             'model' => $model,
@@ -123,5 +124,14 @@ class ExcursionController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    
+    public function actionLists($id) {
+        $excursion = Excursion::find()
+                ->where(['id' => $id])
+                ->all();
+        foreach ($excursion as $ecurs) {
+            echo $ecurs->priceMan;
+        }   
     }
 }

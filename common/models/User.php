@@ -208,8 +208,6 @@ class User extends ActiveRecord implements IdentityInterface
         $this->username = $username;
         $this->photo = $photo;
         $this->password_hash = $hash;
-        $this->auth_key = Yii::$app->security->generateRandomString();
-        $this->save();
         return $this->save();
         
     }
