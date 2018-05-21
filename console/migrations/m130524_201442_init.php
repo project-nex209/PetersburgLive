@@ -28,6 +28,7 @@ class m130524_201442_init extends Migration
             'photo' => $this->string(),
         ], $tableOptions);
     }
+    
 
     public function down()
     {
