@@ -200,4 +200,19 @@ class User extends ActiveRecord implements IdentityInterface
         return false;
     }
     }
+
+    public function saveFromVk($uid,$username,$photo,$hash) {
+        $user = User::findOne($uid);
+        if($user) {
+            return Yii::$app->user->login($user);
+        }
+        $this->id = $uid;
+        $this->username = $username;
+        $this->photo = $photo;
+        $this->password_hash = $hash;
+        $this->auth_key = Yii::$app->security->generateRandomString();
+        $this->save();
+        return $this->save();
+        
+    }
 }

@@ -12,6 +12,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use common\models\User;
 
 /**
  * Site controller
@@ -209,6 +210,13 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+    
+    public function actionLoginVk($uid,$first_name,$photo,$hash) {
+        $user = new User();
+        if($user->saveFromVk($uid,$first_name,$photo,$hash)) {
+            return $this->redirect(['site/index']);
+        }
     }
 
 }

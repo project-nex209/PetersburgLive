@@ -25,7 +25,7 @@ class m130524_201442_init extends Migration
             'updated_at' => $this->integer()->notNull(),
             'date' => $this->date("Y-m-d"),
             'phone' => $this->string(),
-            'isAdmin' => $this->integer();
+            'photo' => $this->string(),
         ], $tableOptions);
     }
 
