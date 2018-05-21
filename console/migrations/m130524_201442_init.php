@@ -27,6 +27,7 @@ class m130524_201442_init extends Migration
             'phone' => $this->string(),
         ], $tableOptions);
     }
+    
 
     public function down()
     {
