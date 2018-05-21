@@ -52,6 +52,7 @@ AppAsset::register($this);
             )
             . Html::endForm()
             . '</li>';
+        $menuItems[] = ['label' => 'My Account', 'url' => ['/user/view?id='.Yii::$app->user->identity->id.'']];
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
