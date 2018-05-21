@@ -19,7 +19,6 @@ use yii\web\IdentityInterface;
  * @property integer $status
  * @property integer $created_at
  * @property integer $updated_at
- * @property integer $isAdmin
  * @property string $password write-only password
  */
 class User extends ActiveRecord implements IdentityInterface
@@ -27,7 +26,9 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
     const STATUS_ADMIN = 20;
-    
+    public $newPassword;
+
+
 
 
     /**
@@ -56,6 +57,11 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_ADMIN]],
+            ['newPassword', 'string', 'min'=>6],
+            ['email', 'email'],
+            ['username', 'string'],
+            ['phone', 'string'],
+
         ];
     }
 
@@ -73,6 +79,17 @@ class User extends ActiveRecord implements IdentityInterface
     public static function findIdentityByAccessToken($token, $type = null)
     {
         throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
+    }
+
+    public function beforeSave($insert){
+      if(parent::beforeSave($insert)){
+        if($this->newPassword){
+          $this->updatePassword($this->newPassword);
+        }
+        return true;
+      } else {
+        return false;
+      }
     }
 
     /**
@@ -166,6 +183,22 @@ class User extends ActiveRecord implements IdentityInterface
         $this->password_hash = Yii::$app->security->generatePasswordHash($password);
     }
 
+    public function updatePassword($newPassword){
+        $this->password_hash = Yii::$app->security->generatePasswordHash($newPassword);
+    }
+
+    public function updateEmail($newEmail){
+      $this->email = $newEmail;
+    }
+
+    public function updateUsername($newUsername){
+      $this->username = $newUsername;
+    }
+
+    public function updatePhone($newPhone){
+      $this->phone = $newPhone;
+    }
+
     /**
      * Generates "remember me" authentication key
      */
@@ -211,6 +244,6 @@ class User extends ActiveRecord implements IdentityInterface
         $this->auth_key = Yii::$app->security->generateRandomString();
         $this->save();
         return $this->save();
-        
+
     }
 }
