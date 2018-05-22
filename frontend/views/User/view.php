@@ -44,6 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
     <?php
+    
       $tokenQuery = (new Query())
       ->select(['id', 'id_user', 'id_excursion', 'date', 'countMan', 'price'])
       ->from('token')
