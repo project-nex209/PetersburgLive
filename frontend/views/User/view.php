@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'date',
             'phone',
             [
-              'attribute' => 'token',
+              'title' => 'token',
               'value' => function($model){
                 $query = (new \yii\db\Query())
                 ->select(['id', 'id_user', 'excursion', 'price'])
