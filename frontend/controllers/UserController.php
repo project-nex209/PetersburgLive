@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use Yii;
 use common\models\User;
+use frontend\controllers\TokenController;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -20,6 +21,19 @@ class UserController extends Controller
     public function behaviors()
     {
         return [
+          'access' => [
+              'class' => \yii\filters\AccessControl::className(),
+              'rules' => [
+                      [
+                      'allow' => true,
+                      'roles' => ['@'],
+                  ],
+                      [
+                      'allow' => true,
+                      'controllers' => ['admin/token'],
+                  ],
+              ],
+          ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

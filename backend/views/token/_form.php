@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 use common\models\Excursion;
 /* @var $this yii\web\View */
@@ -14,7 +15,7 @@ use common\models\Excursion;
 
     <?= $form->field($model, 'id_user')->textInput() ?>
 
-    <?= $form->field($model, 'excursion')->dropDownList(ArrayHelper::map(Excursion::find()->all(), 'id', 'excursion')) ?>
+    <?= $form->field($model, 'id_excursion')->dropDownList(ArrayHelper::map(Excursion::find()->all(), 'id', 'id_excursion')) ?>
 
     <?= $form->field($model, 'date')->textInput() ?>
 
