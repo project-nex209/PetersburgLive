@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
               'attribute' => 'token',
               'value' => function($model){
                 $query = (new \yii\db\Query())
-                ->select(['id', 'id_user', 'excursion', 'price'])
+                ->select(['id', 'id_user', 'id_excursion', 'price'])
                 ->from('token')
                 ->where(['id_user' => $model->id])
                 ->all();
