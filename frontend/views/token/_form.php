@@ -16,18 +16,13 @@ use yii\widgets\Pjax;
     <?php $form = ActiveForm::begin(); ?>
         <?php
 $script = <<< JS
-    $("#token-id_excursion,#token-countman,#token-date").click( function(){
+    $('input,select').on('input keyup', function(e) {
         $.post("../excursion/lists?id="+$("#token-id_excursion").val(), function( data ) {
             let count = $("#token-countman").val();
             $( "#token-price" ).val( data * count );
             $( "#token-price-view" ).html( data * count );
     })})
-    $( document ).ready(function() {
-        $.post("../excursion/lists?id="+$("#token-id_excursion").val(), function( data ) {
-            let count = $("#token-countman").val();
-            $( "#token-price" ).val( data * count );
-            $( "#token-price-view" ).html( data * count );
-    })})    
+
 JS;
     $this->registerJs($script, yii\web\View::POS_READY);
     ?>
@@ -42,7 +37,7 @@ JS;
     <?= $form->field($model, 'date')->widget(DatePicker::className(), [
                 'pluginOptions' => [
                 'forceParse' => 'false',
-                'format' => 'yyyy-mm-dd',
+                'format' => 'yyyy-mm-dd hh:ii',
                 ]
     ])?>
 
@@ -51,7 +46,7 @@ JS;
     <?php //= $form->field($model, 'countChildren')->textInput(['data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => 'лица до 14 лет','type' => 'number']) ?>
     
     
-    <p>Цена:<span id="token-price-view"></span></p>
+    <p>Цена:<span id="token-price-view">0</span></p>
     <?= $form->field($model, 'price',['template' => '{input}'])->hiddenInput() ?>
 
     <div class="form-group">
