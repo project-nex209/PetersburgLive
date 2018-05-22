@@ -130,8 +130,8 @@ class ExcursionController extends Controller
         $excursion = Excursion::find()
                 ->where(['id' => $id])
                 ->all();
-        foreach ($excursion as $ecurs) {
-            echo $ecurs->priceMan;
+        foreach ($excursion as $excurs) {
+            return $excurs->priceMan;
         }   
     }
 }

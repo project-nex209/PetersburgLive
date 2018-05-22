@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <!-- VK Widget -->
 <div id="vk_auth"></div>
 <script type="text/javascript">
-  VK.Widgets.Auth("vk_auth", {"authUrl":"/site/login-vk"});
+  VK.Widgets.Auth("vk_auth", {"authUrl":"/frontend/web/site/login-vk"});
 </script>
         </div>
 

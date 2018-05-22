@@ -58,6 +58,7 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_ADMIN]],
             ['newPassword', 'string', 'min'=>6],
+            ['vk_id', 'integer'],
             ['email', 'email'],
             ['username', 'string'],
             ['phone', 'string'],
@@ -233,15 +234,15 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     public function saveFromVk($uid,$username,$photo,$hash) {
-        $user = User::findOne($uid);
+        $user = User::find()->where(['vk_id'=>$uid])->one();
         if($user) {
             return Yii::$app->user->login($user);
         }
-        $this->id = $uid;
+        $this->vk_id = $uid;
         $this->username = $username;
         $this->photo = $photo;
         $this->password_hash = $hash;
-        return $this->save();
-
+        $this->save();
+        return Yii::$app->user->login($this);
     }
 }
