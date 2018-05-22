@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'id_user',
-            'excursion',
+            'id_excursion',
             'date',
             'countMan',
             //'countChildren',

@@ -46,14 +46,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php
     
       $tokenQuery = (new Query())
-      ->select(['id', 'id_user', 'id_excursion', 'date', 'countMan', 'price'])
+      ->select('id_excursion')
       ->from('token')
       ->where(['id_user' => $model->id])
       ->all();
 
-      $token = ArrayHelper::map($tokenQuery, 'id', 'id_excursion');
-
-        $array = ArrayHelper::map(Excursion::find(['id' => $token['id_excursion']])->all(), 'id', 'excursion');
+      $w->ArrayHelper::map(Excursion::find()->all(), 'id', 'excursion');
     ?>
 
 
