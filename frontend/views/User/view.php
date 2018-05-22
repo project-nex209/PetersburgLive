@@ -1,8 +1,11 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 use yii\widgets\DetailView;
 use yii\db\Query;
+use common\models\Token;
+use common\models\Excursion;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\User */
@@ -17,14 +20,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
     </p>
+
 
     <?= DetailView::widget([
         'model' => $model,
@@ -40,24 +37,23 @@ $this->params['breadcrumbs'][] = $this->title;
             //'updated_at',
             'date',
             'phone',
-            [
-              'attribute' => 'token',
-              'value' => function($model){
-                $query = (new \yii\db\Query())
-                ->select(['id', 'id_user', 'id_excursion', 'price'])
-                ->from('token')
-                ->where(['id_user' => $model->id])
-                ->all();
-
-                foreach($query as $key){
-                  echo $key['price'];
-                }
-              },
-            ],
             //'family',
             //'children',
             //'isAdmin',
         ],
     ]) ?>
+
+    <?php
+      $tokenQuery = (new Query())
+      ->select(['id', 'id_user', 'id_excursion', 'date', 'countMan', 'price'])
+      ->from('token')
+      ->where(['id_user' => $model->id])
+      ->all();
+
+      $token = ArrayHelper::map($tokenQuery, 'id', 'id_excursion');
+
+        $array = ArrayHelper::map(Excursion::find(['id' => $token['id_excursion']])->all(), 'id', 'excursion');
+    ?>
+
 
 </div>
