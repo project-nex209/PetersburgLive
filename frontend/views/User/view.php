@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\db\Query;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\User */
@@ -39,6 +40,20 @@ $this->params['breadcrumbs'][] = $this->title;
             //'updated_at',
             'date',
             'phone',
+            [
+              'attribute' => 'token',
+              'value' => function($model){
+                $query = (new \yii\db\Query())
+                ->select(['id', 'id_user', 'excursion', 'price'])
+                ->from('token')
+                ->where(['id_user' => $model->id])
+                ->all();
+
+                foreach($query as $key){
+                  var_dump($key);
+                }
+              },
+            ],
             //'family',
             //'children',
             //'isAdmin',
