@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'date',
             'phone',
             [
-              'title' => 'token',
+              'attribute' => 'token',
               'value' => function($model){
                 $query = (new \yii\db\Query())
                 ->select(['id', 'id_user', 'id_excursion', 'price'])
@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ->all();
 
                 foreach($query as $key){
-                  var_dump($key);
+                  echo $KEY['price'];
                 }
               },
             ],
