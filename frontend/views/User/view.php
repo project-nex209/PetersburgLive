@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ->all();
 
                 foreach($query as $key){
-                  echo $KEY['price'];
+                  echo $key['price'];
                 }
               },
             ],
