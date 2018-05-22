@@ -44,14 +44,34 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
     <?php
-    
+
       $tokenQuery = (new Query())
       ->select('id_excursion')
       ->from('token')
-      ->where(['id_user' => $model->id])
+      ->where(['id_user' => Yii::$app->user->identity->id])
       ->all();
 
-      $w->ArrayHelper::map(Excursion::find()->all(), 'id', 'excursion');
+
+      foreach($tokenQuery as $key){
+        $token[] = $key['id_excursion'];
+      }
+
+
+
+      $excQuery = (new Query())
+      ->select(['id', 'excursion'])
+      ->from('excursion')
+      ->where(['id' => $token])
+      ->all();
+
+      //var_dump($excQuery);
+      //var_dump($token['id_excursion']);
+
+      foreach($excQuery as $key){
+        //var_dump($key);
+          echo "<p>".$key['excursion']."</p>";
+      }
+
     ?>
 
 
