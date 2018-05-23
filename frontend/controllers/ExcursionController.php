@@ -130,8 +130,14 @@ class ExcursionController extends Controller
         $excursion = Excursion::find()
                 ->where(['id' => $id])
                 ->all();
+        
+        $prices = [];
         foreach ($excursion as $excurs) {
-            return $excurs->priceMan;
-        }   
+            $prices[$excurs->id] = [
+                "priceMan" => $excurs->priceMan,
+                "priceChildren" => $excurs->priceChildren
+            ];
+        }
+        echo json_encode($prices);
     }
 }

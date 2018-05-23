@@ -46,31 +46,33 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php
 
       $tokenQuery = (new Query())
-      ->select('id_excursion')
+      ->select('excursion.excursion')
       ->from('token')
-      ->where(['id_user' => Yii::$app->user->identity->id])
+      ->innerJoin('excursion','token.id_excursion = excursion.id')
+      ->where(['token.id_user' => Yii::$app->user->identity->id])
       ->all();
 
 
       foreach($tokenQuery as $key){
-        $token[] = $key['id_excursion'];
+          echo $key['excursion'];
       }
 
 
 
-      $excQuery = (new Query())
-      ->select(['id', 'excursion'])
-      ->from('excursion')
-      ->where(['id' => $token])
-      ->all();
-
-      //var_dump($excQuery);
-      //var_dump($token['id_excursion']);
-
-      foreach($excQuery as $key){
-        //var_dump($key);
-          echo "<p>".$key['excursion']."</p>";
-      }
+//
+//      $excQuery = (new Query())
+//      ->select(['id', 'excursion'])
+//      ->from('excursion')
+//      ->where(['id' => $token])
+//      ->all();
+//
+//      //var_dump($excQuery);
+//      //var_dump($token['id_excursion']);
+//
+//      foreach($excQuery as $key){
+//        //var_dump($key);
+//          echo "<p>".$key['excursion']."</p>";
+//      }
 
     ?>
 
