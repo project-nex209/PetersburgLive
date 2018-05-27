@@ -18,9 +18,16 @@ use yii\widgets\Pjax;
 $script = <<< JS
     $('input,select').on('input keyup', function(e) {
         $.post("../excursion/lists?id="+$("#token-id_excursion").val(), function( data ) {
-            let count = $("#token-countman").val();
-            $( "#token-price" ).val( data * count );
-            $( "#token-price-view" ).html( data * count );
+            let obj = $.parseJSON( data );
+        
+            let man = obj[$("#token-id_excursion").val()].priceMan;
+            let children = obj[$("#token-id_excursion").val()].priceChildren;
+        
+            let countm = $("#token-countman").val();
+            let countc = $("#token-countchildren").val();
+        
+            $( "#token-price" ).val( man * countm  + children * countc);
+            $( "#token-price-view" ).html( man * countm + children * countc);
     })})
 
 JS;
@@ -43,7 +50,7 @@ JS;
 
     <?= $form->field($model, 'countMan')->textInput(['type' => 'number','min' => 0]) ?>
 
-    <?php //= $form->field($model, 'countChildren')->textInput(['data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => 'лица до 14 лет','type' => 'number']) ?>
+    <?= $form->field($model, 'countChildren')->textInput(['data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => 'лица до 14 лет','type' => 'number','min' => 0]) ?>
     
     
     <p>Цена:<span id="token-price-view">0</span></p>

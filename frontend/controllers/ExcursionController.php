@@ -138,6 +138,6 @@ class ExcursionController extends Controller
                 "priceChildren" => $excurs->priceChildren
             ];
         }
-        echo json_encode($prices);
+        return json_encode($prices);
     }
 }
