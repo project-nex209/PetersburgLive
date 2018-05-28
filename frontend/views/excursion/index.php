@@ -9,6 +9,7 @@ use yii\grid\GridView;
 $this->title = 'Экскурсии';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="excursion-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
