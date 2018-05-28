@@ -29,10 +29,10 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => Html::img('@web/images/PiterLive(21).png',['width' => '100%']),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-default navbar-fixed-top',
+            'class' => 'navbar navbar-expand-lg navbar-light bg-light',
         ],
     ]);
     $menuItems = [

@@ -138,5 +138,33 @@ class TokenController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+    
+    public function actionLists($id) {
+        $tokenQuery = (new Query())
+                ->select('excursion.excursion, token.price')
+                ->from('token')
+                ->innerJoin('excursion','token.id_excursion = excursion.id')
+                ->where(['token.id_user' => Yii::$app->user->identity->id])
+                ->all();
+
+
+                foreach($tokenQuery as $key){
+                    return json_encode($key);
+                   // echo $key['excursion'];
+                   // echo $key['price'];
+                }
+    }
+//        $excursion = Excursion::find()
+//                ->where(['id' => $id])
+//                ->all();
+//        
+//        $prices = [];
+//        foreach ($excursion as $excurs) {
+//            $prices[$excurs->id] = [
+//                "priceMan" => $excurs->priceMan,
+//                "priceChildren" => $excurs->priceChildren
+//            ];
+//        }
+//        return json_encode($prices);
 
 }

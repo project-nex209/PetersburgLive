@@ -22,7 +22,25 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     </p>
 
+            <?php
+$script = <<< JS
+    $(document).ready( function( data ) {
+        $.post("../token/lists?id="+$("#token-id_excursion").val(), function( data ) {
+            let obj = $.parseJSON( data );
+            alert( data );
+            let man = obj[$("#token-id_excursion").val()].priceMan;
+            let children = obj[$("#token-id_excursion").val()].priceChildren;
+        
+            let countm = $("#token-countman").val();
+            let countc = $("#token-countchildren").val();
+        
+            $( "#token-price" ).val( man * countm  + children * countc);
+            $( "#token-price-view" ).html( man * countm + children * countc);
+    })
 
+JS;
+    $this->registerJs($script, yii\web\View::POS_READY);
+    ?>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -49,10 +67,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                 foreach($tokenQuery as $key){
-                    echo "<div>";
-                    echo $key['excursion'];
-                    echo $key['price'];
-                    echo "</div>";
+                    return json_encode($key);
+                   // echo $key['excursion'];
+                   // echo $key['price'];
                 }
               },
             ],

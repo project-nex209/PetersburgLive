@@ -53,7 +53,7 @@ JS;
     <?= $form->field($model, 'countChildren')->textInput(['data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => 'лица до 14 лет','type' => 'number','min' => 0]) ?>
     
     
-    <p>Цена:<span id="token-price-view">0</span></p>
+    <h1>Цена:<span id="token-price-view">0</span></h1>
     <?= $form->field($model, 'price',['template' => '{input}'])->hiddenInput() ?>
 
     <div class="form-group">

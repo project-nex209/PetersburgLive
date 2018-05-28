@@ -8,7 +8,7 @@ use yii\helpers\Html;
 
 $this->title = 'Create Token';
 $this->params['breadcrumbs'][] = ['label' => 'Tokens', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="token-create">
 
