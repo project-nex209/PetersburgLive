@@ -19,13 +19,13 @@ $script = <<< JS
     $('input,select').on('input keyup', function(e) {
         $.post("../excursion/lists?id="+$("#token-id_excursion").val(), function( data ) {
             let obj = $.parseJSON( data );
-        
+
             let man = obj[$("#token-id_excursion").val()].priceMan;
             let children = obj[$("#token-id_excursion").val()].priceChildren;
-        
+
             let countm = $("#token-countman").val();
             let countc = $("#token-countchildren").val();
-        
+
             $( "#token-price" ).val( man * countm  + children * countc);
             $( "#token-price-view" ).html( man * countm + children * countc);
     })})
@@ -36,28 +36,28 @@ JS;
 
     <?= $form->field($model, 'id_user',['template' => '{input}'])->hiddenInput(['value' => Yii::$app->user->identity->id]) ?>
 
-    
+
     <?= $form->field($model, 'id_excursion')->dropDownList(ArrayHelper::map(Excursion::find()->all(), 'id', 'excursion'),[
-        'prompt' => 'Select Excursion'
-        ]); ?>
+        'prompt' => 'Выберите экскурсию'
+        ])->label("Экскурсии"); ?>
 
     <?= $form->field($model, 'date')->widget(DatePicker::className(), [
                 'pluginOptions' => [
                 'forceParse' => 'false',
                 'format' => 'yyyy-mm-dd',
                 ]
-    ])?>
+    ])->label("Дата проведения экскурсии");?>
 
-    <?= $form->field($model, 'countMan')->textInput(['type' => 'number','min' => 0]) ?>
+    <?= $form->field($model, 'countMan')->textInput(['type' => 'number','min' => 0])->label("Количество взрослых"); ?>
 
-    <?= $form->field($model, 'countChildren')->textInput(['data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => 'лица до 14 лет','type' => 'number','min' => 0]) ?>
-    
-    
-    <h1>Цена:<span id="token-price-view">0</span></h1>
+    <?= $form->field($model, 'countChildren')->textInput(['data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => 'лица до 14 лет','type' => 'number','min' => 0])->label("Количество детей"); ?>
+
+
+    <h1>Цена: <span id="token-price-view">0</span></h1>
     <?= $form->field($model, 'price',['template' => '{input}'])->hiddenInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Оформить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
