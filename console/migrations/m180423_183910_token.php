@@ -16,7 +16,7 @@ class m180423_183910_token extends Migration
                   'id' => $this->primaryKey(),
                   'id_user' => $this->integer(),
                   'id_excursion' => $this->integer(),
-                  'date' => $this->date("Y-m-d H:i:s"),
+                  'date' => $this->dateTime("Y-m-d H:i:s"),
                   'countMan' => $this->integer(),
                   'countChildren' => $this->integer(),
                   'price'=>$this->integer(),

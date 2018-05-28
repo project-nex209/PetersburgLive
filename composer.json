@@ -16,13 +16,11 @@
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": "~2.0.6",
+        "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "kartik-v/yii2-widget-datepicker": "@dev",
         "2amigos/yii2-date-picker-widget": "~1.0",
-        "twbs/bootstrap": "4.1.1",
-        "yiisoft/yii2-bootstrap": "~2.1.0@dev",
-        "bower-asset/bootstrap": "~4.0.0@alpha",
-        "bower-asset/jquery": "2.2.*"
+        "kartik-v/yii2-widget-datetimepicker": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

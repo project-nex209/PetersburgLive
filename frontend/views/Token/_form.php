@@ -6,6 +6,8 @@ use yii\helpers\ArrayHelper;
 use common\models\Excursion;
 use kartik\date\DatePicker;
 use yii\widgets\Pjax;
+use kartik\datetime\DateTimePicker;
+
 /* @var $this yii\web\View */
 /* @var $model common\models\Token */
 /* @var $form yii\widgets\ActiveForm */
@@ -41,12 +43,15 @@ JS;
         'prompt' => 'Select Excursion'
         ]); ?>
 
-    <?= $form->field($model, 'date')->widget(DatePicker::className(), [
+    <?= $form->field($model, 'date')->widget(DateTimePicker::className(), [
+                'options' => ['placeholder' => 'Select operating time ...'],
+                'convertFormat' => true,
                 'pluginOptions' => [
-                'forceParse' => 'false',
-                'format' => 'yyyy-mm-dd',
+                'format' => 'yyyy-M-d H:i:s',
+                'todayHighlight' => true
                 ]
-    ])?>
+        ]);
+    ?>
 
     <?= $form->field($model, 'countMan')->textInput(['type' => 'number','min' => 0]) ?>
 
