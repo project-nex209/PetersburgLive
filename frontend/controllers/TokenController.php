@@ -47,13 +47,15 @@ class TokenController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Token::find(),
-        ]);
+      $model = new Token();
 
-        return $this->render('index', [
-            'dataProvider' => $dataProvider,
-        ]);
+      if ($model->load(Yii::$app->request->post()) && $model->save()) {
+          return $this->redirect(['view', 'id' => $model->id]);
+      }
+
+      return $this->render('create', [
+          'model' => $model,
+      ]);
     }
 
     /**
