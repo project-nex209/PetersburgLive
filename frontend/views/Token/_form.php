@@ -42,6 +42,7 @@ JS;
     <?= $form->field($model, 'id_excursion')->dropDownList(ArrayHelper::map(Excursion::find()->all(), 'id', 'excursion'),[
         'prompt' => 'Select Excursion'
         ]); ?>
+    
 
     <?= $form->field($model, 'date')->widget(DateTimePicker::className(), [
                 'options' => ['placeholder' => 'Select operating time ...'],
