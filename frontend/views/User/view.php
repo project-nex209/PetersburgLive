@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php
 
       $tokenQuery = (new Query())
-      ->select('excursion.excursion')
+      ->select('excursion.excursion, token.price')
       ->from('token')
       ->innerJoin('excursion','token.id_excursion = excursion.id')
       ->where(['token.id_user' => Yii::$app->user->identity->id])
@@ -54,7 +54,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
       foreach($tokenQuery as $key){
+          echo "<div>";
           echo $key['excursion'];
+          echo $key['price'];
+          echo "</div>";
       }
 
 
