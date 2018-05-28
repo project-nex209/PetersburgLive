@@ -44,7 +44,7 @@ JS;
     <?= $form->field($model, 'date')->widget(DatePicker::className(), [
                 'pluginOptions' => [
                 'forceParse' => 'false',
-                'format' => 'yyyy-mm-dd hh:ii',
+                'format' => 'yyyy-mm-dd',
                 ]
     ])?>
 
