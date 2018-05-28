@@ -36,24 +36,25 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
-        ['label' => 'Buy ticket', 'url' => ['/token/create']],
+        ['label' => 'Главная', 'url' => ['/site/index']],
+        ['label' => 'О нас', 'url' => ['/site/about']],
+        ['label' => 'Связаться', 'url' => ['/site/contact']],
+        ['label' => 'Экскурсии', 'url' => ['/excursion/index']],
+        ['label' => 'Купить билет', 'url' => ['/token/create']],
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        $menuItems[] = ['label' => 'Регистрация', 'url' => ['/site/signup']];
+        $menuItems[] = ['label' => 'Войти', 'url' => ['/site/login']];
     } else {
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
+                'Выйти (' . Yii::$app->user->identity->username . ')',
                 ['class' => 'btn btn-link logout']
             )
             . Html::endForm()
             . '</li>';
-        $menuItems[] = ['label' => 'My Account', 'url' => ['/user/view?id='.Yii::$app->user->identity->id.'']];
+        $menuItems[] = ['label' => 'Аккаунт', 'url' => ['/user/view?id='.Yii::$app->user->identity->id.'']];
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],

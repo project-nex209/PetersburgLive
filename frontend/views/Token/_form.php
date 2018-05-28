@@ -40,12 +40,12 @@ JS;
 
     
     <?= $form->field($model, 'id_excursion')->dropDownList(ArrayHelper::map(Excursion::find()->all(), 'id', 'excursion'),[
-        'prompt' => 'Select Excursion'
+        'prompt' => 'Выберите экскурсию'
         ]); ?>
     
 
     <?= $form->field($model, 'date')->widget(DateTimePicker::className(), [
-                'options' => ['placeholder' => 'Select operating time ...'],
+                'options' => ['placeholder' => 'Дата проведения экускурсии'],
                 'convertFormat' => true,
                 'pluginOptions' => [
                 'format' => 'yyyy-M-d H:i:s',
@@ -54,16 +54,16 @@ JS;
         ]);
     ?>
 
-    <?= $form->field($model, 'countMan')->textInput(['type' => 'number','min' => 0]) ?>
+    <?= $form->field($model, 'countMan')->textInput(['type' => 'number','min' => 0])->label("Количество взрослых"); ?>
 
-    <?= $form->field($model, 'countChildren')->textInput(['data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => 'лица до 14 лет','type' => 'number','min' => 0]) ?>
+    <?= $form->field($model, 'countChildren')->textInput(['data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => 'лица до 14 лет','type' => 'number','min' => 0])->label("Количество детей"); ?>
     
     
-    <h1>Цена:<span id="token-price-view">0</span></h1>
+    <h1>Цена: <span id="token-price-view">0</span></h1>
     <?= $form->field($model, 'price',['template' => '{input}'])->hiddenInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Оформить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
