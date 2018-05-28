@@ -37,6 +37,25 @@ $this->params['breadcrumbs'][] = $this->title;
             //'updated_at',
             'date',
             'phone',
+            [
+              'attribute' => 'token',
+              'value' => function(){
+                $tokenQuery = (new Query())
+                ->select('excursion.excursion, token.price')
+                ->from('token')
+                ->innerJoin('excursion','token.id_excursion = excursion.id')
+                ->where(['token.id_user' => Yii::$app->user->identity->id])
+                ->all();
+
+
+                foreach($tokenQuery as $key){
+                    echo "<div>";
+                    echo $key['excursion'];
+                    echo $key['price'];
+                    echo "</div>";
+                }
+              },
+            ],
             //'family',
             //'children',
             //'isAdmin',
@@ -45,20 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php
 
-      $tokenQuery = (new Query())
-      ->select('excursion.excursion, token.price')
-      ->from('token')
-      ->innerJoin('excursion','token.id_excursion = excursion.id')
-      ->where(['token.id_user' => Yii::$app->user->identity->id])
-      ->all();
 
-
-      foreach($tokenQuery as $key){
-          echo "<div>";
-          echo $key['excursion'];
-          echo $key['price'];
-          echo "</div>";
-      }
 
 
 
