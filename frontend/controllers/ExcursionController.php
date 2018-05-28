@@ -64,16 +64,13 @@ class ExcursionController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Excursion();
+      $dataProvider = new ActiveDataProvider([
+          'query' => Excursion::find(),
+      ]);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-        
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+      return $this->render('index', [
+          'dataProvider' => $dataProvider,
+      ]);
     }
 
     /**
@@ -85,15 +82,13 @@ class ExcursionController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+      $dataProvider = new ActiveDataProvider([
+          'query' => Excursion::find(),
+      ]);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+      return $this->render('index', [
+          'dataProvider' => $dataProvider,
+      ]);
     }
 
     /**
@@ -103,12 +98,12 @@ class ExcursionController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-    }
+  //  public function actionDelete($id)
+  //  {
+  //      $this->findModel($id)->delete();
+//
+  //      return $this->redirect(['index']);
+  //  }
 
     /**
      * Finds the Excursion model based on its primary key value.
@@ -125,12 +120,12 @@ class ExcursionController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-    
+
     public function actionLists($id) {
         $excursion = Excursion::find()
                 ->where(['id' => $id])
                 ->all();
-        
+
         $prices = [];
         foreach ($excursion as $excurs) {
             $prices[$excurs->id] = [
