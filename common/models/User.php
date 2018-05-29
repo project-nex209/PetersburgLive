@@ -27,6 +27,7 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_ACTIVE = 10;
     const STATUS_ADMIN = 20;
     public $newPassword;
+    public $photoFile;
 
 
 
@@ -59,9 +60,11 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_ADMIN]],
             ['newPassword', 'string', 'min'=>6],
             ['vk_id', 'integer'],
+            [['photoFile'], 'file', 'extensions' => 'png, jpg'],
             ['email', 'email'],
             ['username', 'string'],
             ['phone', 'string'],
+            ['photo', 'string'],
 
         ];
     }
@@ -244,5 +247,16 @@ class User extends ActiveRecord implements IdentityInterface
         $this->password_hash = $hash;
         $this->save();
         return Yii::$app->user->login($this);
+    }
+    
+    public function upload()
+    {
+        if ($this->validate()) {
+            $this->photoFile->saveAs('uploads/user/' . $this->id .'_'. md5($this->photoFile->baseName) . '.' . $this->photoFile->extension);
+            $this->photo = 'uploads/user/' . $this->id .'_'.  md5($this->photoFile->baseName) . '.' . $this->photoFile->extension;
+            return true;
+        } else {
+            return false;
+        }
     }
 }

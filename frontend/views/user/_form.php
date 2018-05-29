@@ -14,6 +14,7 @@ use yii\widgets\MaskedInput;
 
     <?php $form = ActiveForm::begin(); ?>
     <?= $form->field($model, 'username')->textInput()->label("Ф.И.О пользователя") ?>
+    <?= $form->field($model, 'photoFile')->fileInput() ?>
     <?= $form->field($model, 'newPassword')->passwordInput()->label("Новый пароль")?>
     <?= $form->field($model, 'email')->label("Электронная почта")?>
     <?= $form->field($model, 'phone')->widget(MaskedInput::className(), [

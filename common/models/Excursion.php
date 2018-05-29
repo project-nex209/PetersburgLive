@@ -67,8 +67,8 @@ class Excursion extends \yii\db\ActiveRecord
     public function upload()
     {
         if ($this->validate()) {
-            $this->imageFile->saveAs('../../frontend/web/uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
-            $this->image = '../../frontend/web/uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension;
+            $this->imageFile->saveAs('../../frontend/web/uploads/excursion/' . $this->id .'_'.  md5($this->imageFile->baseName) . '.' . $this->imageFile->extension);
+            $this->image = '../../frontend/web/uploads/excursion/' . $this->id .'_'. md5($this->imageFile->baseName) . '.' . $this->imageFile->extension;
             return true;
         } else {
             return false;

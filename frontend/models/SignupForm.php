@@ -15,6 +15,7 @@ class SignupForm extends Model
     public $date;
     public $phone;
     public $photo;
+    public $photoFile;
 
 
     /**
@@ -32,7 +33,7 @@ class SignupForm extends Model
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Email занят'],
-
+            [['photoFile'], 'file', 'extensions' => 'png, jpg'],
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
 
@@ -58,10 +59,23 @@ class SignupForm extends Model
         $user->email = $this->email;
         $user->date = $this->date;
         $user->phone = $this->phone;
-        $user->photo = $this->photo;
+        //$user->photo = $this->photo;
+        $user->photoFile = $this->photoFile->saveAs('uploads/user/' . $this->id .'_'. md5($this->photoFile->baseName) . '.' . $this->photoFile->extension);
+        $user->photo = 'uploads/user/' . $this->id .'_'. md5($this->photoFile->baseName) . '.' . $this->photoFile->extension;
         $user->setPassword($this->password);
         $user->generateAuthKey();
 
         return $user->save() ? $user : null;
     }
+    
+//    public function upload()
+//    {
+//        if ($this->validate()) {
+//            $this->photoFile->saveAs('uploads/user' . $this->photoFile->baseName . '.' . $this->photoFile->extension);
+//            $this->photo = 'uploads/user' . $this->photoFile->baseName . '.' . $this->photoFile->extension;
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 }

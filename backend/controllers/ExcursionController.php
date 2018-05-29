@@ -101,13 +101,12 @@ class ExcursionController extends Controller {
     public function actionUpdate($id) {
         $model = $this->findModel($id);
         
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $model->image = UploadedFile::getInstance($model, 'image');
-            if ($model->image) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
                 $model->upload();
-                    return $this->redirect(['view', 'id' => $model->id]);
-            }
-            
+                $model->save(false);
+                return $this->redirect(['view', 'id' => $model->id]);            
+                
         }
 
         return $this->render('update', [

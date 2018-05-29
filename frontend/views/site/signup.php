@@ -24,6 +24,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
 
                 <?= $form->field($model, 'username')->textInput(['autofocus' => true])->label("ФИО"); ?>
+            
+                <?= $form->field($model, 'photoFile')->fileInput() ?>
 
                 <?= $form->field($model, 'email') ?>
 

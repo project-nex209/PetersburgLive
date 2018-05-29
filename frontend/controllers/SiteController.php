@@ -13,6 +13,7 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use common\models\User;
+use yii\web\UploadedFile;
 
 /**
  * Site controller
@@ -151,6 +152,7 @@ class SiteController extends Controller
     {
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
+            $model->photoFile = UploadedFile::getInstance($model, 'photoFile');
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user)) {
                     return $this->goHome();

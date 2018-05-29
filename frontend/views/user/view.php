@@ -36,25 +36,25 @@ $this->params['breadcrumbs'][] = $this->title;
             //'updated_at',
             'date',
             'phone',
-            [
-                'attribute' => 'token',
-                'value' => function() {
-                    $tokens = Token::find()
-                            ->where(['id_user' => Yii::$app->user->identity->id])
-                            ->all();
-
-                    $token = [];
-                    foreach ($tokens as $tok) {
-
-                        $token[$tok->id] = [
-                            "excursion" => $tok->id_excursion,
-                            "date" => $tok->date,
-                            "price" => $tok->price
-                        ];
-                    }
-                    
-                },
-            ],
+//            [
+//                'attribute' => 'token',
+//                'value' => function() {
+//                    $tokens = Token::find()
+//                            ->where(['id_user' => Yii::$app->user->identity->id])
+//                            ->all();
+//
+//                    $token = [];
+//                    foreach ($tokens as $tok) {
+//
+//                        $token[$tok->id] = [
+//                            "excursion" => $tok->id_excursion,
+//                            "date" => $tok->date,
+//                            "price" => $tok->price
+//                        ];
+//                    }
+//                    
+//                },
+//            ],
         //'family',
         //'children',
         //'isAdmin',
@@ -62,14 +62,14 @@ $this->params['breadcrumbs'][] = $this->title;
     ])
     ?>
     <?php 
-     $tokenQuery = (new Query())
-                ->select('excursion.excursion, token.price')
-                ->from('token')
-                ->innerJoin('excursion','token.id_excursion = excursion.id')
-                ->where(['token.id_user' => Yii::$app->user->identity->id])
-                ->all();
-                foreach($tokenQuery as $key){
-                    return json_encode($key);
+//     $tokenQuery = (new Query())
+//                ->select('excursion.excursion, token.price')
+//                ->from('token')
+//                ->innerJoin('excursion','token.id_excursion = excursion.id')
+//                ->where(['token.id_user' => Yii::$app->user->identity->id])
+//                ->all();
+//                foreach($tokenQuery as $key){
+//                    return json_encode($key);
     ?>
 
 
