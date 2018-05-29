@@ -39,7 +39,6 @@ AppAsset::register($this);
         ['label' => 'Главная', 'url' => ['/site/index']],
         ['label' => 'О нас', 'url' => ['/site/about']],
         ['label' => 'Связаться', 'url' => ['/site/contact']],
-        ['label' => 'Экскурсии', 'url' => ['/excursion/index']],
         ['label' => 'Купить билет', 'url' => ['/token/create']],
     ];
     if (Yii::$app->user->isGuest) {

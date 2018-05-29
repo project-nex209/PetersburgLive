@@ -1,31 +1,31 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $model common\models\Excursion */
 
-$this->title = 'Экскурсии';
+$this->title = $model->excursion;
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
-<div class="excursion-index">
+<div class="excursion-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'columns' => [
-            //['class' => 'yii\grid\SerialColumn'],
-
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
             //'id',
             'excursion',
             'position',
+            [
+                'attribute' => 'image',
+                'value' => html::img('@web/'.$model->image,['width' => '200px']),
+                'format' => 'html',
+            ],
             'priceMan',
             'priceChildren',
-
-            ['class' => 'yii\grid\ActionColumn', 'template' => '{view}'],
         ],
-    ]); ?>
+    ]) ?>
+
 </div>

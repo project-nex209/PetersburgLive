@@ -33,7 +33,7 @@ class ExcursionController extends Controller
      * Lists all Excursion models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($id = 1)
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Excursion::find(),
@@ -41,6 +41,7 @@ class ExcursionController extends Controller
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
+            'model' => $this->findModel($id),
         ]);
     }
 
