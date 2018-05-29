@@ -39,7 +39,7 @@ class m180423_183910_token extends Migration
 
 
               $this->createIndex(
-                  'idx-token-excursion',
+                  'idx-token-id_excursion',
                   'token',
                   'id_excursion'
               );

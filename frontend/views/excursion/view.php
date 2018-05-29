@@ -13,13 +13,17 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="excursion-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             //'id',
             'excursion',
             'position',
+            [
+                'attribute' => 'image',
+                'value' => html::img('@web/'.$model->image,['width' => '200px']),
+                'format' => 'html',
+            ],
             'priceMan',
             'priceChildren',
         ],

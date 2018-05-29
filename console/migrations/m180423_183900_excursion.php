@@ -19,6 +19,7 @@ class m180423_183900_excursion extends Migration
                   'priceMan' => $this->integer(),
                   'priceChildren' => $this->integer(),
       ]);
+      
     }
 
     /**

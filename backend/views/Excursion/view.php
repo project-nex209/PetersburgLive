@@ -24,13 +24,18 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
             'excursion',
             'position',
+            [
+                'attribute' => 'image',
+                'value' => html::img('@web/'.$model->image,['width' => '200px']),
+                'format' => 'html'
+                
+            ],
             'priceMan',
             'priceChildren',
         ],

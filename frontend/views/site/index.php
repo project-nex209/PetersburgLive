@@ -13,7 +13,7 @@ $excursions = (new Query())
 <div class="row">
   <?php
     foreach ($excursions as $key) {
-      echo "<div class='card col-md-6 col-lg-6 mt-4'>";
+      echo "<div class='card .col-sm-1 col-md-12 col-lg-4'>";
       echo "<div class='card-header bg-white'>";
       echo "<h3 class='card-title'>".$key['excursion']."</h3>";
       echo "<h4 class='card-subtitle mb-2 text-muted'>".$key['position']."</h4>";

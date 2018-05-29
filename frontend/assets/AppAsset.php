@@ -14,11 +14,10 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/site.css',
         'css/bootstrap.css',
-      //  'css/bootstrap.min.css',
     ];
     public $js = [
-        'js/bootstrap.js',
-        'js/bootstrap.bundle.js',
+        //'js/bootstrap.js',
+        //'js/bootstrap.bundle.js',
        
     ];
     public $depends = [

@@ -70,7 +70,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 body {
   margin: 0;
   font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 400;
   line-height: 1.5;
   color: #000;
@@ -97,6 +97,7 @@ h1, h2, h3, h4, h5, h6 {
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+  font-weight: 500;
 }
 
 abbr[title],
@@ -243,6 +244,7 @@ th {
 label {
   display: inline-block;
   margin-bottom: 0.5rem;
+  font-weight: 500;
 }
 
 button {
@@ -1969,7 +1971,7 @@ pre code {
   display: block;
   width: 100%;
   padding: 0.75rem 2rem;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   line-height: 1.5rem;
   color: #55595c;
   background-color: #f7f7f9;
@@ -2061,7 +2063,7 @@ select.form-control:focus::-ms-value {
 .col-form-label-sm {
   padding-top: calc(0.5rem + 0);
   padding-bottom: calc(0.5rem + 0);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   line-height: 1.5;
 }
 
@@ -2097,7 +2099,7 @@ select.form-control:focus::-ms-value {
 .input-group-sm > .input-group-prepend > .btn,
 .input-group-sm > .input-group-append > .btn {
   padding: 0.5rem 1rem;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   line-height: 1.5;
   border-radius: 0;
 }
@@ -2506,7 +2508,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
           user-select: none;
   border: 0 solid transparent;
   padding: 0.75rem 2rem;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   line-height: 1.5rem;
   border-radius: 0;
   -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
@@ -3159,7 +3161,7 @@ fieldset:disabled a.btn {
 
 .btn-sm, .btn-group-sm > .btn {
   padding: 0.5rem 1rem;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   line-height: 1.5;
   border-radius: 0;
 }
@@ -3248,7 +3250,7 @@ input[type="button"].btn-block {
   min-width: 10rem;
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: #919aa1;
   text-align: left;
   list-style: none;
@@ -3407,7 +3409,7 @@ input[type="button"].btn-block {
   display: block;
   padding: 0.5rem 1.5rem;
   margin-bottom: 0;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: #919aa1;
   white-space: nowrap;
 }
@@ -3681,7 +3683,7 @@ input[type="button"].btn-block {
           align-items: center;
   padding: 0.75rem 2rem;
   margin-bottom: 0;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 400;
   line-height: 1.5rem;
   color: #55595c;
@@ -5020,7 +5022,7 @@ input[type="button"].btn-block {
 
 .pagination-sm .page-link {
   padding: 0.25rem 0.5rem;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   line-height: 1.5;
 }
 
@@ -5820,7 +5822,7 @@ button.close {
   word-spacing: normal;
   white-space: normal;
   line-break: auto;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   word-wrap: break-word;
   opacity: 0;
 }
@@ -5933,7 +5935,7 @@ button.close {
   word-spacing: normal;
   white-space: normal;
   line-break: auto;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   word-wrap: break-word;
   background-color: #fff;
   background-clip: padding-box;
@@ -6069,7 +6071,7 @@ button.close {
 .popover-header {
   padding: 0.5rem 0.75rem;
   margin-bottom: 0;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: #1a1a1a;
   background-color: #f7f7f7;
   border-bottom: 1px solid #ebebeb;
@@ -6420,7 +6422,7 @@ button.bg-danger:focus {
 }
 
 .bg-light {
-  background-color: #fff !important;
+  background-color: #efefef !important;
 }
 
 a.bg-light:hover, a.bg-light:focus,
@@ -9298,6 +9300,7 @@ a.text-warning:hover, a.text-warning:focus {
 
 .text-danger {
   color: #d9534f !important;
+  font-weight:400;
 }
 
 a.text-danger:hover, a.text-danger:focus {
@@ -9433,7 +9436,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .navbar {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
   font-weight: 600;
 }
@@ -9468,7 +9471,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .btn {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
 }
 
@@ -9519,7 +9522,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 th {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
 }
 
@@ -9528,7 +9531,7 @@ th {
 }
 
 .dropdown-menu {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   text-transform: none;
 }
 

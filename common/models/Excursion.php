@@ -17,6 +17,9 @@ use Yii;
  */
 class Excursion extends \yii\db\ActiveRecord
 {
+   public $imageFile;
+    
+
     /**
      * @inheritdoc
      */
@@ -28,11 +31,13 @@ class Excursion extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    
     public function rules()
     {
         return [
             [['priceMan', 'priceChildren'], 'integer'],
-            [['excursion', 'position'], 'string', 'max' => 255],
+            [['imageFile'], 'file', 'extensions' => 'png, jpg'],
+            [['excursion', 'position','image'], 'string', 'max' => 255],
         ];
     }
 
@@ -44,6 +49,7 @@ class Excursion extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'excursion' => 'Excursion',
+            'imageFile' => 'Image',
             'position' => 'Position',
             'priceMan' => 'Price Man',
             'priceChildren' => 'Price Children',
@@ -57,4 +63,16 @@ class Excursion extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Token::className(), ['id_excursion' => 'id']);
     }
+    
+    public function upload()
+    {
+        if ($this->validate()) {
+            $this->imageFile->saveAs('../../frontend/web/uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
+            $this->image = '../../frontend/web/uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

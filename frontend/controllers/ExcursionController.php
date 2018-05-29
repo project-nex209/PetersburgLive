@@ -122,12 +122,12 @@ class ExcursionController extends Controller
     }
 
     public function actionLists($id) {
-        $excursion = Excursion::find()
+        $excursions = Excursion::find()
                 ->where(['id' => $id])
                 ->all();
 
         $prices = [];
-        foreach ($excursion as $excurs) {
+        foreach ($excursions as $excurs) {
             $prices[$excurs->id] = [
                 "priceMan" => $excurs->priceMan,
                 "priceChildren" => $excurs->priceChildren
