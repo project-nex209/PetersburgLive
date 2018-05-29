@@ -3,7 +3,7 @@ use yii\db\Query;
 use yii\helpers\Html;
 
 $excursions = (new Query())
-              ->select(['id', 'excursion', 'position', 'priceMan', 'priceChildren'])
+              ->select(['id', 'excursion', 'position', 'priceMan', 'priceChildren', 'image'])
               ->from('excursion')
               ->all();
 
@@ -19,6 +19,8 @@ $excursions = (new Query())
       echo "<h4 class='card-subtitle mb-2 text-muted'>".$key['position']."</h4>";
       echo "</div>";
       echo "<div class='card-body'>";
+      echo html::img('@web/'.$key['image'], ['class' => 'card-image', 'width' => '100%']);
+      echo "<hr>";
       echo "<div class='card-text'>";
       echo "<p> Цена взрослого: ".$key['priceMan']."&#x20bd;</p>";
       echo "<p> Цена детская: ".$key['priceChildren']."&#x20bd;</p>";
