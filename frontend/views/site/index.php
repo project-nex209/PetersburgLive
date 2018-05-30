@@ -27,7 +27,8 @@ $excursions = (new Query())
       echo "</div>";
       echo "</div>";
       echo "<div class='card-footer bg-white'>";
-      echo Html::a('Посмотреть', ['excursion/view', 'id' => $key['id']], ['class' => 'card-link text-danger']);
+      echo Html::a('Посмотреть', ['excursion/', 'id' => $key['id']], ['class' => 'card-link text-danger']);
+      echo Html::a('Купить', ['token/', 'id' => $key['id']], ['class' => 'card-link text-success']);
       echo "</div>";
       echo "</div>";
     }

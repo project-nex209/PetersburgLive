@@ -102,9 +102,9 @@ class User extends ActiveRecord implements IdentityInterface
      * @param string $username
      * @return static|null
      */
-    public static function findByUsername($username)
+    public static function findByEmail($email)
     {
-        return static::findOne(['username' => $username, 'status' => [self::STATUS_ACTIVE, self::STATUS_ADMIN]]);
+        return static::findOne(['email' => $email, 'status' => [self::STATUS_ACTIVE, self::STATUS_ADMIN]]);
     }
 
     /**
@@ -227,8 +227,8 @@ class User extends ActiveRecord implements IdentityInterface
         $this->password_reset_token = null;
     }
 
-    public static function isUserAdmin($username){
-      if (static::findOne(['username' => $username, 'status' => self::STATUS_ADMIN]))
+    public static function isUserAdmin($email){
+      if (static::findOne(['email' => $email, 'status' => self::STATUS_ADMIN]))
     {
         return true;
     } else {

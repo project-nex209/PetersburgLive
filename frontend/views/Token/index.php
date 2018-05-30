@@ -1,36 +1,21 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+
 
 /* @var $this yii\web\View */
-/* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $model common\models\Token */
 
-$this->title = 'Tokens';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Оформить билет';
+$this->params['breadcrumbs'][] = ['label' => 'Покупка', 'url' => ['index']];
+
 ?>
-<div class="token-index">
+<div class="token-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Token', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <?= $this->render('_form', [
+        'model' => $model,
+    ]) ?>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'id_user',
-            'id_excursion',
-            'date',
-            'countMan',
-            //'countChildren',
-            //'price',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
 </div>

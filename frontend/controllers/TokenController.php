@@ -54,7 +54,7 @@ class TokenController extends Controller
           return $this->redirect(['view', 'id' => $model->id]);
       }
 
-      return $this->render('create', [
+      return $this->render('index', [
           'model' => $model,
       ]);
     }
@@ -77,18 +77,18 @@ class TokenController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
-    {
-        $model = new Token();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
-    }
+//    public function actionCreate()
+//    {
+//        $model = new Token();
+//
+//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//            return $this->redirect(['view', 'id' => $model->id]);
+//        }
+//
+//        return $this->render('index', [
+//            'model' => $model,
+//        ]);
+//    }
 
     /**
      * Updates an existing Token model.

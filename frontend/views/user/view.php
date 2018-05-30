@@ -11,18 +11,9 @@ use common\models\Excursion;
 /* @var $model common\models\User */
 
 $this->title = $model->username;
-$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-view">
-
-    <style media="screen">
-      .panel-body{
-        font-size: 2rem;
-        font-weight: 400;
-      }
-    </style>
-
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-offset-0 col-sm-offset-0 toppad" >
@@ -30,14 +21,14 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="panel-heading bg-light border-0">
               <h3 class="panel-title text-dark p-2"><?=$model->username?></h3>
               <span class="p-2">
-                  <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary btn-danger']) ?>
+                  <?= Html::a('Настройки', ['update', 'id' => $model->id], ['class' => 'btn btn-primary btn-danger']) ?>
  
               </span>
             </div>
-            <div class="panel-body mt-5">
+            <div class="mt-5">
               <div class="row">
-                <div class=" col-md-9 col-lg-9 ">
-                  <table class="table table-user-information">
+                <div class="div_user col-md-12 col-lg-12 ">
+                  <table class="table table-user-information col-sm-12 col-md-9 col-lg-9">
                     <tbody>
                       <tr>
                         <td>ФИО</td>
@@ -51,12 +42,17 @@ $this->params['breadcrumbs'][] = $this->title;
                         <td>Email</td>
                         <td><?= $model->email ?></td>
                       </tr>
+                      <tr>
                         <td>Контактный номер</td>
+                        <td><?= $model->phone ?></td>
+                      </tr>
+                      <tr>
+                        <td>Экскурсии</td>
                         <td><?= $model->phone ?></td>
                       </tr>
                     </tbody>
                   </table>
-                  <div class="col-md-3 col-lg-3 " align="center"><?= HTML::img('@web/'.$model->photo, ['class' => 'img-circle img-responsive']) ?></div>
+                  <div class="img_user col-sm-6 col-md-6 col-lg-3" align="center"><?= HTML::img('@web/'.$model->photo, ['class' => 'img-responsive']) ?></div>
                 </div>
               </div>
             </div>
@@ -65,6 +61,12 @@ $this->params['breadcrumbs'][] = $this->title;
       </div>
     </div>
 <?php
+$tokenQuery = (new Query())
+                ->select('token.id','excursion.excursion, token.price')
+                ->from('token')
+                ->innerJoin('excursion','token.id_excursion = excursion.id')
+                ->where(['token.id_user' => $model->id])
+                ->all();
 //    DetailView::widget([
 //        'model' => $model,
 //        'attributes' => [
@@ -87,10 +89,6 @@ $this->params['breadcrumbs'][] = $this->title;
 //                            ->where(['id_user' => Yii::$app->user->identity->id])
 //                            ->all();
 
-//
-
-
-
 //                    $token = [];
 //                    foreach ($tokens as $tok) {
 //
@@ -101,10 +99,6 @@ $this->params['breadcrumbs'][] = $this->title;
 //                        ];
 //                    }
 
-//                    
-
-//
-
 //                },
 //            ],
         //'family',
@@ -114,26 +108,5 @@ $this->params['breadcrumbs'][] = $this->title;
 //        ],
 //    ])
     ?>
-    <?php 
-
-//        ],
-//    ])
-//    ?>
-   <?php
-
-//     $tokenQuery = (new Query())
-//                ->select('excursion.excursion, token.price')
-//                ->from('token')
-//                ->innerJoin('excursion','token.id_excursion = excursion.id')
-//                ->where(['token.id_user' => Yii::$app->user->identity->id])
-//                ->all();
-//                foreach($tokenQuery as $key){
-
-//                    return json_encode($key);
-
-  //                  return json_encode($key);
-
-    ?>
-
 
 </div>

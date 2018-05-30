@@ -6,9 +6,8 @@ use yii\helpers\Html;
 /* @var $model common\models\User */
 
 $this->title = "Редактирование профиля";
-$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = ['label' => $model->username, 'url' => ['user/', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Настройки';
 ?>
 <div class="user-update">
 

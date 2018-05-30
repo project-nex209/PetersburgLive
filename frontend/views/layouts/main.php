@@ -39,7 +39,7 @@ AppAsset::register($this);
         ['label' => 'Главная', 'url' => ['/site/index']],
         ['label' => 'О нас', 'url' => ['/site/about']],
         ['label' => 'Связаться', 'url' => ['/site/contact']],
-        ['label' => 'Купить билет', 'url' => ['/token/create']],
+        ['label' => 'Купить билет', 'url' => ['/token']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Регистрация', 'url' => ['/site/signup']];
@@ -53,7 +53,7 @@ AppAsset::register($this);
             )
             . Html::endForm()
             . '</li>';
-        $menuItems[] = ['label' => 'Аккаунт', 'url' => ['/user/view?id='.Yii::$app->user->identity->id.'']];
+        $menuItems[] = ['label' => 'Аккаунт', 'url' => ['/user/?id='.Yii::$app->user->identity->id.'']];
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],

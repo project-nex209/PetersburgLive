@@ -48,11 +48,11 @@ class Excursion extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'excursion' => 'Excursion',
-            'imageFile' => 'Image',
-            'position' => 'Position',
-            'priceMan' => 'Price Man',
-            'priceChildren' => 'Price Children',
+            'excursion' => 'Экскурсия',
+            'image' => 'Фото',
+            'position' => 'Адрес',
+            'priceMan' => 'Цена за взрослого',
+            'priceChildren' => 'Цена за ребенка',
         ];
     }
 

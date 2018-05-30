@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model common\models\Token */
 
 $this->title = 'Оформить билет';
-$this->params['breadcrumbs'][] = ['label' => 'Билет', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Покупка', 'url' => ['index']];
 
 ?>
 <div class="token-create">

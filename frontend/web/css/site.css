@@ -119,10 +119,37 @@ a.desc:after {
     outline: none;
 }
 .input-group-addon {
-    border-radius: none;
+    border-radius: 0;
     border: none;
     padding: 0 20px 0 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.img_user {
+    height: 25rem;
+    overflow: hidden;
+}
+.div_user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.excursion-view a {
+    margin: 10px 0;
+}
+/*.token_user {
+    display: flex;
+    align-items: center;
+}
+.token_user div:first-child {
+    margin:5px 5px 5px 0;
+}
+.token_user div {
+    margin:5px 5px;
+}*/
+@media (max-width: 768px) {
+    .div_user {
+        display: block;
+    }
 }

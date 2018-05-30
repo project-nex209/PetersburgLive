@@ -97,7 +97,7 @@ h1, h2, h3, h4, h5, h6 {
 p {
   margin-top: 0;
   margin-bottom: 1rem;
-  font-weight: 500;
+  //font-weight: 500;
 }
 
 abbr[title],
@@ -9300,7 +9300,6 @@ a.text-warning:hover, a.text-warning:focus {
 
 .text-danger {
   color: #d9534f !important;
-  font-weight:400;
 }
 
 a.text-danger:hover, a.text-danger:focus {
@@ -9545,4 +9544,65 @@ th {
 }
 .navbar-header {
     width: 15%;
+}
+@media (min-width: 992px) {
+.col-lg-4 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 33.3333333333%;
+    flex: 0 0 31.5%;
+    max-width: 31.5%;
+    margin: 10px;
+}
+}
+.card {
+    margin: 10px;
+}
+.card-link {
+    font-weight: 400;
+}
+h1, .h1 {
+    font-size: 2.4rem;
+    margin: 10px 0;
+}
+h3, .h3 {
+    font-size: 1.8rem;
+}
+h4, .h4 {
+    font-size: 1.6rem;
+}
+body {
+    font-size: 1.6rem;
+    font-weight: normal;
+}
+a {
+    font-weight: 400;
+}
+.token-form  {
+    padding: 0 !important;
+}
+.form-control {
+    font-size: 1.6rem;
+    padding: 0px 10px;
+}
+.navbar-nav {
+    align-items: center;
+}
+.navbar-nav > li > a {
+    font-weight: inherit;
+}
+.bg-light {
+    border-radius: 0;
+}
+.row {
+    margin-right: 0;
+    margin-left: 0;
+}
+.row > div {
+    padding: 0;
+} 
+.panel-body {
+    font-size: 1.8rem !important;
+}
+.nav li > form > button.logout {
+    font-weight: inherit;
 }

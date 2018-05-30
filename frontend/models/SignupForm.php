@@ -68,14 +68,4 @@ class SignupForm extends Model
         return $user->save() ? $user : null;
     }
     
-//    public function upload()
-//    {
-//        if ($this->validate()) {
-//            $this->photoFile->saveAs('uploads/user' . $this->photoFile->baseName . '.' . $this->photoFile->extension);
-//            $this->photo = 'uploads/user' . $this->photoFile->baseName . '.' . $this->photoFile->extension;
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
 }

@@ -12,6 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="excursion-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <?= Html::a('Купить билет', ['token/', 'id' => $model->id], ['class' => 'btn btn-primary btn-danger']) ?>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [

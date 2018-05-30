@@ -49,11 +49,11 @@ class Token extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'id_user' => 'Id User',
-            'id_excursion' => 'Id Excursion',
-            'date' => 'Date',
-            'countMan' => 'Count Man',
-            'countChildren' => 'Count Children',
-            'price' => 'Price',
+            'id_excursion' => 'Экскурсия',
+            'date' => 'Дата проведения',
+            'countMan' => 'Количество взрослых',
+            'countChildren' => 'Количество детей',
+            'price' => 'Цена',
         ];
     }
 

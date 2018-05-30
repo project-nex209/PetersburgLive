@@ -18,14 +18,14 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-lg-5">
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
-            <?= $form->field($model, 'username')->textInput(['autofocus' => true])->label("ФИО"); ?>
+            <?= $form->field($model, 'email')->textInput(['autofocus' => true])->label("Email"); ?>
 
             <?= $form->field($model, 'password')->passwordInput()->label("Пароль"); ?>
 
             <?= $form->field($model, 'rememberMe')->checkbox()->label("Запомнить меня"); ?>
 
             <div style="color:#999;margin:1em 0">
-               <?= Html::a('Забыли пароль?', ['site/request-password-reset']) ?>.
+               <?= Html::a('Забыли пароль', ['site/request-password-reset']) ?>.
             </div>
 
             <div class="form-group">

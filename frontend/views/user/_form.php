@@ -14,7 +14,7 @@ use yii\widgets\MaskedInput;
 
     <?php $form = ActiveForm::begin(); ?>
     <?= $form->field($model, 'username')->textInput()->label("Ф.И.О пользователя") ?>
-    <?= $form->field($model, 'photoFile')->fileInput() ?>
+    <?= $form->field($model, 'photoFile')->fileInput()->label('Загрузка изображения') ?>
     <?= $form->field($model, 'newPassword')->passwordInput()->label("Новый пароль")?>
     <?= $form->field($model, 'email')->label("Электронная почта")?>
     <?= $form->field($model, 'phone')->widget(MaskedInput::className(), [
@@ -23,7 +23,7 @@ use yii\widgets\MaskedInput;
 
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-danger']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

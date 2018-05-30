@@ -48,7 +48,7 @@ class UserController extends Controller
      * Lists all User models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($id)
     {
         $dataProvider = new ActiveDataProvider([
             'query' => User::find(),
@@ -56,6 +56,7 @@ class UserController extends Controller
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -85,7 +86,7 @@ class UserController extends Controller
             $model->photoFile = UploadedFile::getInstance($model, 'photoFile');
                 $model->upload();
                 $model->save(false);
-                return $this->redirect(['view', 'id' => $model->id]);            
+                return $this->redirect(['user/', 'id' => $model->id]);            
                 
         }
         return $this->render('create', [
@@ -108,7 +109,7 @@ class UserController extends Controller
             $model->photoFile = UploadedFile::getInstance($model, 'photoFile');
                 $model->upload();
                 $model->save(false);
-                return $this->redirect(['view', 'id' => $model->id]);            
+                return $this->redirect(['user/', 'id' => $model->id]);            
                 
         }
 
